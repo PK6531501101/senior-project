@@ -1,0 +1,62 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.position-wrapper {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  padding-bottom: 10rem;
+}
+
+.agree {
+  width: 16rem;
+  margin: 10px auto;
+  padding: 10px 25px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  background: white;
+  color: black;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.agree:hover {
+  background-color: black;
+  color: white;
+}
+
+.agree:disabled {
+  color: white;
+  background-color: #aaa;
+  cursor: not-allowed;
+  border: none;
+}
+
+.disagree {
+  width: 16rem;
+  margin: 10px auto;
+  padding: 10px 25px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.disagree:hover {
+  background-color: #aaa;
+  color: white;
+}
