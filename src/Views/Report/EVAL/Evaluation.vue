@@ -9,7 +9,7 @@
           <div class="form-section">
             <h4>Division*</h4>
             <select v-model="selectedDivision" required>
-              <option disabled value="">-- Select Division --</option>
+              <option disabled value="">Select Division</option>
               <option v-for="d in divisions" :key="d._id" :value="d.name">{{ d.name }}</option>
             </select>
           </div>
@@ -20,7 +20,7 @@
           <div class="form-section">
             <h4>Evaluation</h4>
             <select v-model="selectedEvaluationId" required>
-              <option disabled value="">-- Select Evaluation --</option>
+              <option disabled value="">Select Evaluation</option>
               <option v-for="e in evaluations" :key="e._id" :value="e._id">{{ e.title }}</option>
             </select>
           </div>
