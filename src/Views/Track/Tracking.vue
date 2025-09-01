@@ -14,6 +14,7 @@
             <div class="title-type">
               <h2 class="title">{{ report.type === 'Complaint' ? report.title : report.reportedName }}</h2>
               <span class="type">( {{ report.type }} )</span>
+              <span class="view-badge" :class="{ unread: report.view === 'Not read yet' }"></span>
             </div>
             <span class="status" :class="statusColor(report.status)">{{ report.status }}</span>
           </div>
@@ -89,12 +90,12 @@
           </div>
 
           <div v-if="selectedReport.acceptInfo && selectedReport.acceptInfo.message" class="mt-2 admin-message">
-  <p><strong>Message from Admin:</strong></p>
-  <p>{{ selectedReport.acceptInfo.message }}</p>
-</div>
-<div v-else class="mt-2 admin-message">
-  <p>No admin message yet.</p>
-</div>
+            <p><strong>Message from Admin:</strong></p>
+            <p>{{ selectedReport.acceptInfo.message }}</p>
+          </div>
+          <div v-else class="mt-2 admin-message">
+            <p>No admin message yet.</p>
+          </div>
 
           <button class="btn disagree mt-4" @click="selectedReport = null">Close</button>
         </div>
@@ -142,8 +143,24 @@ const fetchReports = async () => {
   }
 }
 
-const viewReport = (report) => {
+const viewReport = async (report) => {
   selectedReport.value = report
+
+  // อัปเดต view ไป backend
+  try {
+    const res = await fetch(`http://localhost:3000/report/${report.type}/${report._id}/view`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    if (!res.ok) throw new Error('Failed to update view')
+    // อัปเดตใน frontend
+    report.view = 'Read'
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 const statusColor = (status) => {
@@ -345,5 +362,4 @@ onMounted(() => fetchReports())
   text-align: center;
   margin-top: 12px;
 }
-
 </style>

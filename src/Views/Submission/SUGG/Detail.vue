@@ -43,7 +43,7 @@ export default {
       this.$router.push('/login');
       return;
     }
-
+ 
     const id = this.$route.params.id;
     try {
       this.loading = true;
