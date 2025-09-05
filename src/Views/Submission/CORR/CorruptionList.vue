@@ -91,6 +91,7 @@ export default {
     },
     statusColor(status) {
       if (status === 'On Process') return 'status-yellow';
+      if (status === 'Forward' || 'Accept') return 'status-blue';
       if (status === 'Finished') return 'status-green';
       return 'status-red';
     },
@@ -172,6 +173,7 @@ export default {
 
 .status-yellow { color: orange; }
 .status-green { color: green; }
+.status-blue { color: blue; }
 .status-red { color: red; }
 
 .card-bottom {

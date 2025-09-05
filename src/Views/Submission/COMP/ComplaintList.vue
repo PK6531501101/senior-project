@@ -102,6 +102,7 @@ onMounted(() => {
 function statusColor(status) {
   if (status === 'On process') return 'status-yellow';
   if (status === 'Finished') return 'status-green';
+  if (status === 'Forward' || 'Accept') return 'status-blue';
   return 'status-red';
 }
 </script>
@@ -121,6 +122,7 @@ function statusColor(status) {
 
 .status-red { color: red; }
 .status-yellow { color: orange; }
+.status-blue { color: blue; }
 .status-green { color: green; }
 
 .complaint-cards {
